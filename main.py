@@ -1,4 +1,4 @@
-class Operations(self):
+class Operations:
     def addition(self, first_num, second_num):
         return first_num + second_num
 
@@ -29,17 +29,21 @@ class SimpleCalculator(Operations):
         result = 0
 
         while True:
-            equation = input("- ").strip()
+            equation = input("\n- ").strip()
 
             if equation == 'e'  and equation == 'E':
                 print("Exiting program...")
                 break
 
             sliced = equation.split()
+
+            if len(sliced) != 3:
+                print("Error: Invalid spacing. Try again [e.g. 1 + 1]")
+                continue
             try:
-                first_num = float(equation[0])
-                operation = equation[1]
-                second_num = float(equation[2])
+                first_num = float(sliced[0])
+                operation = sliced[1]
+                second_num = float(sliced[2])
             except ValueError:
                 print("\nError: Invalid input. Please enter valid numbers.")
                 continue
@@ -49,7 +53,7 @@ class SimpleCalculator(Operations):
             elif operation == "-":
                 result = self.subtraction(first_num, second_num)
             elif operation == "*":
-                result = self.mutiplication(first_num, second_num)
+                result = self.multiplication(first_num, second_num)
             elif operation == "/":
                 result = self.division(first_num, second_num)
             elif operation == "%":
@@ -61,3 +65,6 @@ class SimpleCalculator(Operations):
 
             print(f"= {result}")
             self.history.append(f"{first_num} {operation} {second_num} = {result}")
+
+calculator = SimpleCalculator()
+calculator.calculate()
