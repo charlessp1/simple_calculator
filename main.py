@@ -1,4 +1,11 @@
-class SimpleCalculator:
+class Operations(self):
+    def addition(self, first_num, second_num):
+        return first_num + second_num
+
+    def subtraction(self, first_num, second_num):
+        return first_num - second_num
+
+class SimpleCalculator(Operations):
     def __init__(self):
         self.history = []
 
@@ -22,3 +29,6 @@ class SimpleCalculator:
             except ValueError:
                 print("\nError: Invalid input. Please enter valid numbers.")
                 continue
+
+            if operation == "+":
+                result = self.addition(first_num, second_num)
