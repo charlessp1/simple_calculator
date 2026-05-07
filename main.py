@@ -5,6 +5,18 @@ class Operations(self):
     def subtraction(self, first_num, second_num):
         return first_num - second_num
 
+    def multiplication(self, first_num, second_num):
+        return first_num * second_num
+
+    def division(self, first_num, second_num):
+        return first_num / second_num
+
+    def modulus(self, first_num, second_num):
+        return first_num % second_num
+
+    def exponent(self, first_num, second_num):
+        return first_num ** second_num
+
 class SimpleCalculator(Operations):
     def __init__(self):
         self.history = []
@@ -13,6 +25,8 @@ class SimpleCalculator(Operations):
         print("-------Simple Calculator-------")
         print("Enter an operation (i.e., 3 * 3 or 1 + 1, etc.)")
         print('Enter "e" to exit.')
+
+        result = 0
 
         while True:
             equation = input("- ").strip()
@@ -32,3 +46,18 @@ class SimpleCalculator(Operations):
 
             if operation == "+":
                 result = self.addition(first_num, second_num)
+            elif operation == "-":
+                result = self.subtraction(first_num, second_num)
+            elif operation == "*":
+                result = self.mutiplication(first_num, second_num)
+            elif operation == "/":
+                result = self.division(first_num, second_num)
+            elif operation == "%":
+                result = self.modulus(first_num, second_num)
+            elif operation == "**":
+                result = self.exponent(first_num, second_num)
+            else:
+                print("Error: Enter a valid operator (e.g. '+', '-', etc.)")
+
+            print(f"= {result}")
+            self.history.append(f"{first_num} {operation} {second_num} = {result}")
