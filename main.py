@@ -21,19 +21,32 @@ class SimpleCalculator(Operations):
     def __init__(self):
         self.history = []
 
+    def show_history(self):
+        print("-----Calculator History-----")
+        if not self.history:
+            print("History is empty\n")
+        else:
+            for item in self.history:
+                print(item)
+        print("-----End of History-----")
+
     def calculate(self):
         print("-------Simple Calculator-------")
         print("Enter an operation (i.e., 3 * 3 or 1 + 1, etc.)")
-        print('Enter "e" to exit.')
+        print('Enter "e" to exit.\nEnter "h" to show history')
 
         result = 0
 
         while True:
             equation = input("\n- ").strip()
 
-            if equation == 'e'  and equation == 'E':
+            if equation == 'e' or equation == 'E':
                 print("Exiting program...")
                 break
+
+            if equation == 'h' or equation == 'H':
+                self.show_history()
+                continue
 
             sliced = equation.split()
 
